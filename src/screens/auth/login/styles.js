@@ -6,8 +6,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     flex: 1,
-    paddingBottom: height(2),
-    paddingTop:height(5.5)
   },
   title: {
     color: AppColors.black,
@@ -25,7 +23,7 @@ const styles = StyleSheet.create({
   },
   footerText: {
     alignItems: "center",
-    marginTop: height(5),
+    marginTop: height(3),
   },
   row: {
     flexDirection: "row",

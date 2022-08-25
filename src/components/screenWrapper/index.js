@@ -3,9 +3,9 @@ import {ImageBackground, SafeAreaView, StatusBar, View} from 'react-native';
 import styles from './styles';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {useIsFocused} from '@react-navigation/native';
-import BackgroundImage from '../../assets/images/BackgroundImg.png'
+import BackgroundImage from '../../assets/images/BackgroundImg.png';
 import AppColors from '~utills/AppColors';
- const ScreenWrapper = ({
+const ScreenWrapper = ({
   children,
   statusBarColor = AppColors.transparent,
   transclucent = false,
@@ -15,6 +15,7 @@ import AppColors from '~utills/AppColors';
   headerUnScrollable = () => null,
   footerUnScrollable = () => null,
   barStyle = 'light-content',
+  containerStyle,
 }) => {
   function FocusAwareStatusBar(props) {
     const isFocused = useIsFocused();
@@ -22,7 +23,12 @@ import AppColors from '~utills/AppColors';
   }
   const content = () => {
     return (
-      <View style={[styles.container, {backgroundColor: backgroundColor}]}>
+      <View
+        style={[
+          styles.container,
+          {backgroundColor: backgroundColor},
+          containerStyle,
+        ]}>
         <FocusAwareStatusBar
           barStyle={barStyle}
           backgroundColor={statusBarColor}

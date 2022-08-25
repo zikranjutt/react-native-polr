@@ -22,7 +22,7 @@ export default function DropDown({
   setOpen,
   arrowCountainer = { paddingRight: width(3) },
   isLogin = true,
-  placeholder
+  placeholder=''
 }) {
   const theme = useSelector((state) => state.Config.theme);
   const themeVisible = useSelector((state) => state.Config.selectedTheme);

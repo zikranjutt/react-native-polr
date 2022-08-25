@@ -1,13 +1,12 @@
-import React from "react";
-import { View } from "react-native";
-import { SVGIcon } from "../../../assets/Svg";
-import { Button, ScreenWrapper } from "~components";
-import ScreenNames from "~routes/routes";
-import styles from "./styles";
+import React from 'react';
+import {View} from 'react-native';
+import {SVGIcon} from '../../../assets/Svg';
+import {Button, ScreenWrapper} from '~components';
+import ScreenNames from '~routes/routes';
+import styles from './styles';
 export default function IntroScreen({navigation}) {
-
   return (
-    <ScreenWrapper transclucent backgroundImage >
+    <ScreenWrapper transclucent backgroundImage>
       <View style={styles.mainViewContainer}>
         <View style={styles.title}>
           <SVGIcon.polrH1 />
@@ -16,19 +15,13 @@ export default function IntroScreen({navigation}) {
           <Button
             textStyle={styles.btnText}
             containerStyle={styles.button}
-            title={"Sign up"}
-            // onPress={() => {
-            //   Navigation.push(props.componentId, {
-            //     component: {
-            //       name: SwiperScreenName,
-            //     },
-            //   });
-            // }}
+            title={'Sign up'}
+            onPress={() => navigation.navigate(ScreenNames.SWIPER)}
           />
           <Button
             textStyle={styles.btnText}
-            title={"Login"}
-            containerStyle={{ borderWidth: 0 }}
+            title={'Login'}
+            containerStyle={{borderWidth: 0}}
             onPress={() => navigation.navigate(ScreenNames.LOGIN)}
           />
         </View>

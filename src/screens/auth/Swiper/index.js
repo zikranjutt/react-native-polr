@@ -1,25 +1,18 @@
-import { View, Text } from "react-native";
-import React from "react";
-import Onboarding from "../../../components/Swipper/Onboarding";
-import styles from "./styles";
-import { SignUpMethodName } from "../../../routes/navigation/screenNames";
-import { Navigation } from "react-native-navigation";
-import { SVGIcon } from "../../../assets/Svg";
-import { ScreenWrapper } from "~components";
+import {View} from 'react-native';
+import React from 'react';
+import styles from './styles';
+import {ScreenWrapper} from '~components';
+import Onboarding from '~components/Swipper/Onboarding';
+import ScreenNames from '~routes/routes';
+import {SVGIcon} from '~assets/Svg';
 
 export default function Swiper(props) {
   return (
-    <ScreenWrapper componentId={props.componentId}>
+    <ScreenWrapper transclucent backgroundImage>
       <View style={styles.countainer}>
         <SVGIcon.polr />
         <Onboarding
-          onPress={() => {
-            Navigation.push(props.componentId, {
-              component: {
-                name: SignUpMethodName,
-              },
-            });
-          }}
+          onPress={() => props.navigation.navigate(ScreenNames.SIGNUPMETHOD)}
         />
       </View>
     </ScreenWrapper>
