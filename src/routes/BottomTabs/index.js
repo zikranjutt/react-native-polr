@@ -3,6 +3,7 @@ import React from 'react';
 import {Image, Platform, Text, Veiw, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import Home from '~screens/app/home';
+import Message from '~screens/app/Message';
 import AppColors from '~utills/AppColors';
 import {height, width} from '~utills/Dimension';
 const Tab = createBottomTabNavigator();
@@ -12,7 +13,7 @@ export default function BottomTab() {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarStyle: {
-              borderTopWidth: 0
+          borderTopWidth: 0,
         },
         headerShown: false,
         tabBarIcon: ({focused, color, size}) => {
@@ -21,14 +22,19 @@ export default function BottomTab() {
             iconName = focused
               ? require('../../assets/images/home.png')
               : require('../../assets/images/home.png');
-          } else if (route.name === 'AddPost') {
+          } else if (route.name === 'Message') {
             iconName = focused
-              ? require('../../assets/images/home.png')
-              : require('../../assets/images/home.png');
-          } else if (route.name === 'SearchTab') {
+              ? require('../../assets/images/message.png')
+              : require('../../assets/images/message.png');
+          } else if (route.name === 'Geofence') {
             iconName = focused
-              ? require('../../assets/images/home.png')
-              : require('../../assets/images/home.png');
+              ? require('../../assets/images/geofence.png')
+              : require('../../assets/images/geofence.png');
+          }
+           else if (route.name === 'Profile') {
+            iconName = focused
+              ? require('../../assets/images/profile.png')
+              : require('../../assets/images/profile.png');
           }
           return (
             <>
@@ -45,8 +51,8 @@ export default function BottomTab() {
               )}
               <Image
                 style={{
-                  width: width(5),
-                  height: width(5),
+                  width: width(7),
+                  height: width(7),
                   resizeMode: 'contain',
                   tintColor: color,
                 }}
@@ -55,49 +61,22 @@ export default function BottomTab() {
             </>
           );
         },
-        tabBarLabel: ({focused, color, size}) => {
-          let label;
-          if (route.name === 'Home') {
-            label = focused ? 'Message' : '';
-          } else if (route.name === 'AddPost') {
-            label = focused ? 'Add Post' : '';
-          } else if (route.name === 'SearchTab') {
-            label = focused ? 'Profile' : '';
-          }
-          return (
-            <Text
-              style={{
-                fontSize: width(3.5),
-                color: color,
-                marginTop: -height(1.6),
-              }}>
-              {label}
-            </Text>
-          );
-        },
       })}
       tabBarOptions={{
-        activeTintColor: AppColors.primaryColor,
-        inactiveTintColor: AppColors.inActive,
+        showLabel: false,
+        activeTintColor: AppColors.green,
+        inactiveTintColor: AppColors.white,
         tabStyle: {
-          height: height(10),
+          // height: height(10),/
           backgroundColor: AppColors.black,
           paddingBottom: height(0.5),
-        },
-        style: {
-          position: 'absolute',
-          backgroundColor: AppColors.black,
-          height: height(Platform.OS == 'ios' ? 8 : 7.5),
-          shadowOffset: {width: 0, height: 12},
-          shadowOpacity: 0.58,
-          shadowRadius: 10.0,
-          elevation: 24,
         },
         keyboardHidesTabBar: true,
       }}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="AddPost" component={Home} />
-      <Tab.Screen name="SearchTab" component={Home} />
+      <Tab.Screen name="Message" component={Message} />
+      <Tab.Screen name="Geofence" component={Home} />
+      <Tab.Screen name="Profile" component={Home} />
     </Tab.Navigator>
   );
 }
